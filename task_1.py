@@ -3,7 +3,6 @@ def count_lines(filename):
     with open(filename) as file:
         for i in file:
             count += 1
-
     return count
 
 def count_words(filename):
@@ -12,13 +11,11 @@ def count_words(filename):
         for i in file:
             words = line.strip().split()
             count += len(words)
-
     return count
 
 def max_line(filename):
     with open(filename) as file:
         longest = max(file, key = len)
-
     return longest
 
 lines = [
@@ -28,6 +25,7 @@ lines = [
     "Алина_____Ревина",
     "Роман Сурнин"
 ]
+
 with open("resource/text.txt", "w") as file:
     for i in lines:
         file.write(i + "\n")

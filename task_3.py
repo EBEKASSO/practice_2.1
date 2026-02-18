@@ -43,7 +43,6 @@ def sum_products():
             quantity = int(quantity_str)
             total += price * quantity
     print(f"\nОбщая стоимость всех товаров: {total}")
-
     return total
 
 products = [
@@ -52,10 +51,12 @@ products = [
     ["Молоко", 120, 20],
     ["Хлеб", 40, 100]
 ]
+
 with open("resource/products.csv", "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["Название", "Цена", "Количество"])
     writer.writerows(products)
+
 while True:
     print("\nВыберите действие:")
     print("1. Добавить товар")

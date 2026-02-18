@@ -30,6 +30,7 @@ def calculator():
         result = num_1 * num_2
     else:
         result = num_1 / num_2
+
     operation_str = f"{num_1} {operation} {num_2} = {result}"
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"[{current_time}] {operation_str}"

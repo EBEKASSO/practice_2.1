@@ -11,6 +11,7 @@ def viewing_books():
 def search_book():
     with open("resource/library.json", "r") as file:
         data = file.read()
+
     data_fixed = "[" + data.replace("},\n{", "},{").replace("\n", "") + "]"
     books = json.loads(data_fixed)
 
@@ -28,6 +29,7 @@ def search_book():
     if not word:
         print("Не введено слово для поиска!")
         return
+
     results = []
     if search_type == "1":
         for book in books:
@@ -91,23 +93,6 @@ def add_book():
     print(f"Год: {new_book['year']}")
     print(f"Статус: Доступна")
 
-library =[
-    {
-        "id": 1,
-        "title": "Мастер и Маргарита",
-        "author": "Булгаков",
-        "year": 1967,
-        "available": True
-    },
-    {
-        "id": 2,
-        "title": "Преступление и наказание",
-        "author": "Достоевский",
-        "year": 1866,
-        "available": False
-    }
-]
-
 def change_status():
     with open("resource/library.json", "r") as file:
         data = file.read()
@@ -123,7 +108,7 @@ def change_status():
             i['available'] = not i['available']
             with open('resource/library.json', 'w') as file:
                 for j, book in enumerate(books):
-                    json.dump(book, file, ensure_ascii=False, indent=4)
+                    json.dump(book, file, ensure_ascii=False, indent = 4)
                     if j != len(books) - 1:
                         file.write(",\n")
             print(f"Статус изменён")
@@ -158,20 +143,40 @@ def export_available_books():
     with open("resource/library.json", "r") as file:
         books = json.loads("[" + file.read().replace("},\n{", "},{").replace("\n", "") + "]")
     available = [b for b in books if b['available']]
+
     with open("resource/available_books.txt", "w") as file:
         for i in available:
             file.write(f"{i['id']}: {i['title']} - {'Доступна' if i['available'] else 'Выдана'}")
     print(f"Сохранено {len(available)} книг")
+
+library =[
+    {
+        "id": 1,
+        "title": "Мастер и Маргарита",
+        "author": "Булгаков",
+        "year": 1967,
+        "available": True
+    },
+    {
+        "id": 2,
+        "title": "Преступление и наказание",
+        "author": "Достоевский",
+        "year": 1866,
+        "available": False
+    }
+]
 
 with open('resource/library.json', 'w') as file:
     for i, book in enumerate(library):
         json.dump(book, file, ensure_ascii=False, indent=4)
         if i != len(library) - 1:
             file.write(",\n")
+
 with open('resource/library.json', 'r') as file:
     print("Содержимое файла library.json:")
     content = file.read()
     print(content)
+
 while True:
     print("\nВыберите действие:")
     print("1. Просмотр всех книг")
