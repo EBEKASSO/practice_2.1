@@ -178,7 +178,6 @@ with open('resource/library.json', 'r') as file:
     print(content)
 
 while True:
-    print("\nВыберите действие:")
     print("1. Просмотр всех книг")
     print("2. Поиск по автору/названию")
     print("3. Добавление новой книги")
