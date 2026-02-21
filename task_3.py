@@ -34,7 +34,7 @@ def search_product_by_name(product_name):
 
 def sum_products():
     total = 0
-    with open("resource/products.csv", "r", encoding="utf-8") as file:
+    with open("resource/products.csv", "r") as file:
         reader = csv.reader(file)
         next(reader, None)
         for row in reader:
@@ -58,7 +58,6 @@ with open("resource/products.csv", "w", newline="") as file:
     writer.writerows(products)
 
 while True:
-    print("\nВыберите действие:")
     print("1. Добавить товар")
     print("2. Найти товар")
     print("3. Общая стоимость товаров")
